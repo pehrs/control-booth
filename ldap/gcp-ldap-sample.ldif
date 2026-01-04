@@ -65,7 +65,7 @@ cn: matti.pehrs
 givenName: Matti
 sn: Pehrs
 uid: matti.pehrs
-mail: matti@pehrs.com
+mail: matti@control-booth.org
 userPassword: pass
 jpegPhoto:: /9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAMCAg4KCgkKCg8KCgsLCgsOCwsKCwgLDQ
  oNCwoKCggKCg4QCwgICwsKCAgKCgoKCwsLCwoLCAoNDQoIDQ4ICgsBAwQEBgUGCgYGCg0NCw4PDw0
@@ -162,5 +162,5 @@ cn: anna.meier
 givenName: Anna
 sn: Meier
 uid: anna.meier
-mail: anna.meier@example.org
+mail: anna.meier@control-booth.org
 userPassword: pass
