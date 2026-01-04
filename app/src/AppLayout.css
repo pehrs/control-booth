@@ -1,0 +1,44 @@
+.header {
+  text-align: center;
+}
+
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .bi {
+  width: 1em;
+  height: 1em;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+.logo {
+  width: 24px;
+}
+
+/* .root {
+  background-color: green;
+} */
+
+/* .container-fluid {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+} */
+
+/* @media (prefers-color-scheme: dark) {
+    --body-bg: #000;
+    --body-color: #fff;
+    background-color: #000;
+    color: #fff;
+} */
+
+.top-navbar {
+  background-color: #333333;
+  border-radius: 0.3em;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+}

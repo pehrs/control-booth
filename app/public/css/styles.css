@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "DosisLight";   /*Can be any text*/
+  src: local("DosisLight"),
+    url("../fonts/dosis/DosisLight-3jdp.ttf") format("truetype");
+}
+
+body {
+  font-family: 'DosisLight', sans-serif !important;
+}

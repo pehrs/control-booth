@@ -1,0 +1,166 @@
+#
+# This ldif tries to mimic the LDAP view exposed by Google Groups
+#
+
+#
+# Org Units
+#
+
+dn: ou=Groups,dc=control-booth,dc=org
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou: Groups
+
+dn: ou=Users,dc=control-booth,dc=org
+changetype: add
+objectClass: top
+objectClass: organizationalUnit
+ou: Users
+
+#
+# User defined Google groups
+#
+
+dn: cn=developers,ou=Groups,dc=control-booth,dc=org
+changetype: add
+objectClass: top
+objectClass: posixGroup
+#objectClass: groupOfNames
+cn: developers
+description: Developers
+#member: uid=matti.pehrs,ou=Users,dc=control-booth,dc=org
+#member: uid=anna.meier,ou=Users,dc=control-booth,dc=org
+memberUid: matti.pehrs
+memberUid: anna.meier
+gidNumber: 983109209
+
+dn: cn=admins,ou=Groups,dc=control-booth,dc=org
+changetype: add
+objectClass: top
+objectClass: posixGroup
+#objectClass: groupOfNames
+cn: admins
+description: Admins
+#member: uid=matti.pehrs,ou=Users,dc=control-booth,dc=org
+memberUid: matti.pehrs
+gidNumber: 983109210
+
+#
+# Users
+#
+
+dn: uid=matti.pehrs,ou=Users,dc=control-booth,dc=org
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 1214675659
+gidNumber: 1214675659
+homeDirectory: /home/matti.pehrs
+displayName: Matti Pehrs
+cn: matti.pehrs
+givenName: Matti
+sn: Pehrs
+uid: matti.pehrs
+mail: matti@pehrs.com
+userPassword: pass
+jpegPhoto:: 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
+ HJP1/k//Z
+
+dn: uid=anna.meier,ou=Users,dc=control-booth,dc=org
+changetype: add
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uidNumber: 1214675660
+gidNumber: 1214675660
+homeDirectory: /home/anna.meier
+displayName: Anna Meier
+cn: anna.meier
+givenName: Anna
+sn: Meier
+uid: anna.meier
+mail: anna.meier@example.org
+userPassword: pass

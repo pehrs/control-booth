@@ -1,0 +1,46 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+application-local.yml
+*.log
+.DS_Store
+
+## IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+
+## VS Code
+.vscode/
+
+## STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+## NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+.env
+.env*
+
+node_modules
+
+keycloak-export/
+
+app/public/fontawesome-free-7.1.0-web/
+app/public/bootstrap-5.3.8-dist/

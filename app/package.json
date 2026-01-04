@@ -1,0 +1,58 @@
+{
+  "name": "control-booth",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "html-react-parser": "^5.2.11",
+    "@tanstack/react-query": "^5.90.12",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "bootstrap": "^5.3.8",
+    "oidc-client": "^1.11.5",
+    "react": "^19.2.3",
+    "react-cookie": "^8.0.1",
+    "react-dom": "^19.2.3",
+    "react-oidc-context": "^3.3.0",
+    "react-error-boundary": "^6.0.1",
+    "react-router-dom": "^7.11.0",
+    "react-scripts": "^5.0.1",
+    "reactstrap": "^9.1.9",
+    "web-vitals": "^5.1.0"
+  },
+  "proxy": "http://control-booth.org:8080",
+  "allowedHosts": [
+    "all"
+  ],
+  "devServer": {
+    "allowedHosts": [
+      "control-booth.org"
+    ]
+  },
+  "scripts": {
+    "start": "HOST=0.0.0.0 PORT=3030 craco start",
+    "start-fix": "DANGEROUSLY_DISABLE_HOST_CHECK=true HOST=0.0.0.0 PORT=3030 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.0.0",
+    "webpack-cli": "^6.0.1"
+  }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!--    Dev logging -->
+  <springProfile name="!production">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <pattern>
+<!--          %d{HH:mm:ss.SSS} %magenta([%thread]) %logger{36} - %cyan(%msg%n)-->
+          %d{HH:mm:ss.SSS} %yellow(%logger{40}.%M\(%class{0}.java:%line\)) - %cyan(%msg%n)
+        </pattern>
+      </encoder>
+    </appender>
+
+    <logger name="com.perhs" level="DEBUG"/>
+    <root level="INFO">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+  </springProfile>
+
+  <!--    PROD logging -->
+  <springProfile name="production">
+    <!--    WIP-->
+
+    <appender name="GCP" class="com.google.cloud.logging.logback.LoggingAppender">
+    </appender>
+
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+      <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+        <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"></jsonFormatter>
+        <timestampFormat>yyyy-MM-dd HH:mm:ss.SSS</timestampFormat>
+        <appendLineSeparator>true</appendLineSeparator>
+      </layout>
+    </appender>
+
+    <logger name="com.perhs" level="INFO"/>
+    <root level="INFO">
+      <appender-ref ref="JSON"/>
+    </root>
+  </springProfile>
+</configuration>
