@@ -22,10 +22,11 @@ and minimize library/framework clashes.
 At the moment not much is implemented, but what works:
 
 - Authentication via Keycloak backed by OpenLDAP
-- Simple Catalog page that list the entities in the database
+- [LdapCatalogEntityProvider](src/main/java/com/pehrs/controlbooth/catalog/LdapCatalogEntityProvider.java) scans LDAP and creates user and group entities.
+- Simple Catalog page that list the entities in the database.
 - Profile page the shows the user details (including the jpegPhoto if it exists in LDAP)
-- Support for dark/light mode in the UI
-- About page
+- Support for dark/light mode in the UI.
+- About page.
 
 ## Architecture
 
