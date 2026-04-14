@@ -80,11 +80,9 @@ public class GroupService {
 
 
   public void update(final Long id, final GroupDTO groupDTO) {
-//    final Group group = groupRepository.findById(id)
-//        .orElseThrow(NotFoundException::new);
-    Group group = new Group();
+    final Group group = groupRepository.findById(id)
+        .orElseThrow(NotFoundException::new);
     mapToEntity(groupDTO, group);
-    group.setId(id);
     groupRepository.save(group);
   }
 

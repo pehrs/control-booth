@@ -1,4 +1,4 @@
-package com.pehrs.controlbooth.catalog;
+package com.pehrs.controlbooth.extensions.gitlab;
 
 import com.pehrs.controlbooth.catalog.spi.CatalogApi;
 import com.pehrs.controlbooth.catalog.spi.CatalogProvider;

@@ -1,4 +1,4 @@
-package com.pehrs.controlbooth.catalog;
+package com.pehrs.controlbooth.extensions.ldap;
 
 import java.util.Base64;
 import java.util.Hashtable;
@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 
 class LdapCatalogEntityProviderIT {
 
-  @Test
-  public void test() throws NamingException {
+  // FIXME: Refactor into integration test using testcontainers to run the ldap service.
+  public static void main(String[] args) throws NamingException {
 
     Hashtable<String, String> env = new Hashtable<>();
     env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");

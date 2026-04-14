@@ -4,7 +4,7 @@ package com.pehrs.controlbooth.catalog.spi;
  * SPI for catalog data providers (plugins).
  *
  * <p>Declare a Spring {@code @Component} that implements this interface and it will be
- * automatically discovered by {@code CatalogProviderScheduler}, which will call
+ * automatically discovered by the {@code CatalogProviderScheduler}, which calls
  * {@link #refresh} on the configured schedule.
  *
  * <pre>{@code

@@ -1,4 +1,4 @@
-package com.pehrs.controlbooth.catalog;
+package com.pehrs.controlbooth.extensions.ldap;
 
 import com.pehrs.controlbooth.catalog.spi.CatalogApi;
 import com.pehrs.controlbooth.catalog.spi.CatalogProvider;
@@ -24,9 +24,11 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConditionalOnProperty(name = "catalog.ldap-provider.enabled", havingValue = "true")
 @Slf4j
 public class LdapCatalogEntityProvider implements CatalogProvider {
 
