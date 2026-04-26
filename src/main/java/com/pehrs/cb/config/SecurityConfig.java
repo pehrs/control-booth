@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class SecurityConfig {
 
-  private HtmlAuthProvider authenticationProvider;
+  private LdapAuthProvider authenticationProvider;
 
 
   @Bean

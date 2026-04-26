@@ -55,15 +55,6 @@ spring.security.oauth2.client:
       issuer-uri: ${NSA2_OAUTH_ISSUER_URI:http://auth.nsa2.com:9000/realms/control-booth}
       user-name-attribute: preferred_username
 
-catalog:
-  ldap-provider:
-    enabled: true
-    hostname: localhost
-    port: 389
-    admin.cn: "cn=admin,dc=control-booth,dc=org"
-    search:
-      root: "dc=control-booth,dc=org"
-      limit: 10000
 
 logging:
   level:
@@ -72,6 +63,16 @@ logging:
         security: TRACE
 
 cb:
+  ldap-provider:
+    enabled: true
+    hostname: localhost
+    port: 389
+    admin:
+      cn: "cn=admin,dc=control-booth,dc=org"
+      password: "admin"
+    search:
+      root: "dc=control-booth,dc=org"
+      limit: 10000
   html:
     client:
       id: "html"

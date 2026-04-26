@@ -1,5 +1,6 @@
 package com.pehrs.cb.adapter.in.ext.ldap;
 
+import com.pehrs.cb.config.LdapConfig;
 import com.pehrs.cb.port.in.CatalogApi;
 import com.pehrs.cb.port.in.spi.CatalogProvider;
 import com.pehrs.cb.core.domain.Group;
@@ -22,6 +23,7 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -30,25 +32,10 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnProperty(name = "catalog.ldap-provider.enabled", havingValue = "true")
 @Slf4j
+@AllArgsConstructor
 public class LdapCatalogEntityProvider implements CatalogProvider {
 
-  @Value("${catalog.ldap-provider.hostname:localhost}")
-  private String ldapHostname;
-
-  @Value("${catalog.ldap-provider.port:389}")
-  private int ldapPort;
-
-  @Value("${catalog.ldap-provider.admin.cn:cn=admin,dc=control-booth,dc=org}")
-  private String adminDn;
-
-  @Value("${catalog.ldap-provider.admin.password:admin}")
-  private String adminPassword;
-
-  @Value("${catalog.ldap-provider.search.root:dc=control-booth,dc=org}")
-  private String searchRoot;
-
-  @Value("${catalog.ldap-provider.search.limit:10000}")
-  private int ldapSearchLimit;
+  LdapConfig ldapConfig;
 
   @Override
   public String getId() {
@@ -64,12 +51,7 @@ public class LdapCatalogEntityProvider implements CatalogProvider {
   // ── LDAP helpers ─────────────────────────────────────────────────────────
 
   private DirContext getContext() throws NamingException {
-    Hashtable<String, String> env = new Hashtable<>();
-    env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-    env.put(Context.PROVIDER_URL, String.format("ldap://%s:%d", ldapHostname, ldapPort));
-    env.put(Context.SECURITY_AUTHENTICATION, "simple");
-    env.put(Context.SECURITY_PRINCIPAL, adminDn);
-    env.put(Context.SECURITY_CREDENTIALS, adminPassword);
+    Hashtable<String, String> env = ldapConfig.getLdapAdminEnv();
     return new InitialDirContext(env);
   }
 
@@ -77,8 +59,8 @@ public class LdapCatalogEntityProvider implements CatalogProvider {
       throws NamingException {
     SearchControls controls = new SearchControls();
     controls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-    controls.setCountLimit(ldapSearchLimit);
-    return ctx.search(searchRoot, String.format("(objectClass=%s)", objectClass), controls);
+    controls.setCountLimit(ldapConfig.getLdapSearchLimit());
+    return ctx.search(ldapConfig.getSearchRoot(), String.format("(objectClass=%s)", objectClass), controls);
   }
 
   private List<String> getAttributes(SearchResult sr, String attributeName) throws NamingException {
