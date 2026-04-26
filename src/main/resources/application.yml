@@ -39,11 +39,6 @@ error:
     log-levels:
       5xx: ERROR
 
-tg:
-  admin:
-    password: admin
-  userDetailsService: com.pehrs.controlbooth.service.CustomUserDetailsService
-
 spring.security.oauth2.client:
   registration:
     control-booth:
@@ -70,3 +65,14 @@ catalog:
       root: "dc=control-booth,dc=org"
       limit: 10000
 
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+
+cb:
+  html:
+    client:
+      id: "html"
+      secret: "pass"

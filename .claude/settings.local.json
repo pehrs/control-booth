@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /home/matti/src/control-booth/control-booth/src/main/java/com/pehrs/controlbooth/**/*.java)",
+      "Bash(./mvnw:*)",
+      "Bash(jar tf *)"
+    ]
+  }
+}

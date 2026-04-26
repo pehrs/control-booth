@@ -22,7 +22,7 @@ and minimize library/framework clashes.
 At the moment not much is implemented, but what works:
 
 - Authentication via Keycloak backed by OpenLDAP
-- [LdapCatalogEntityProvider](src/main/java/com/pehrs/controlbooth/extensions/ldap/LdapCatalogEntityProvider.java) scans LDAP and creates user and group entities.
+- [LdapCatalogEntityProvider](src/main/java/com/pehrs/cb/adapter/in/ext/ldap/LdapCatalogEntityProvider.java) scans LDAP and creates user and group entities.
 - Simple Catalog page that list the entities in the database.
 - Profile page the shows the user details (including the jpegPhoto if it exists in LDAP)
 - Support for dark/light mode in the UI.
@@ -131,13 +131,17 @@ docker-compose -f docker-compose.yml up -d
 # Start the backend service
 mvn spring-boot:run
 
-# Make sure the assets are downloaded for the frontend app
-./scripts/app-get-assets.sh
+# Deprecated: Make sure the assets are downloaded for the frontend app
+#./scripts/app-get-assets.sh
 
-# Start the front end (will open localhost:3000)
-cd app
-npm install
-npm run start
+# Deprecated: Start the front end (will open localhost:3000)
+#cd app
+#npm install
+#npm run start
+
+# Use lynx or w3m to access the frontend
+w3m http://localhost:8080/html/index.html
+
 ```
 
 Services:

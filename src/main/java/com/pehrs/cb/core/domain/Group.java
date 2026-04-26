@@ -1,0 +1,33 @@
+package com.pehrs.cb.core.domain;
+
+
+import jakarta.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
+
+
+@Getter
+@Setter
+@SuperBuilder
+@ToString
+public class Group extends CatalogEntity {
+
+  @Size(max = 255)
+  private String email;
+
+  @Size(max = 16 * 1024)
+  private String picture;
+
+  private String parentName;
+
+  // User names/uid
+  private Set<String> users = new HashSet<>();
+
+  // Group names
+  private Set<String> children = new HashSet<>();
+
+}
