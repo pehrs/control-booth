@@ -3,6 +3,9 @@ package com.pehrs.cb.config;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -11,8 +14,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-//@Configuration
-//@EnableAspectJAutoProxy
+@Configuration
+@EnableAspectJAutoProxy
+@Profile("oauth")
 @AllArgsConstructor
 public class Oauth2SecurityConfig {
 

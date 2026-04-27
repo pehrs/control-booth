@@ -33,13 +33,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class UserRestController {
 
-  private final ClientRegistration registration;
+  // private final ClientRegistration registration;
   private final UserServiceImpl userService;
 
-  public UserRestController(ClientRegistrationRepository registrations,
-      @Value("${control-booth.registration.id:control-booth}") String registrationId,
+  public UserRestController(
+      // ClientRegistrationRepository registrations,
+      // @Value("${control-booth.registration.id:control-booth}") String registrationId,
       UserServiceImpl userService) {
-    this.registration = registrations.findByRegistrationId(registrationId);
+    // this.registration = registrations.findByRegistrationId(registrationId);
     this.userService = userService;
   }
 
@@ -111,11 +112,12 @@ public class UserRestController {
   public ResponseEntity<?> logout(HttpServletRequest request,
       @AuthenticationPrincipal(expression = "idToken") OidcIdToken idToken) {
     // send logout URL to client so they can initiate logout
-    String logoutUrl = this.registration.getProviderDetails()
-        .getConfigurationMetadata().get("end_session_endpoint").toString();
+//    String logoutUrl = this.registration.getProviderDetails()
+//        .getConfigurationMetadata().get("end_session_endpoint").toString();
 
     Map<String, String> logoutDetails = new HashMap<>();
-    logoutDetails.put("logoutUrl", logoutUrl);
+    //logoutDetails.put("logoutUrl", logoutUrl);
+    logoutDetails.put("logoutUrl", "/");
     logoutDetails.put("idToken", idToken.getTokenValue());
     request.getSession(false).invalidate();
     return ResponseEntity.ok().body(logoutDetails);

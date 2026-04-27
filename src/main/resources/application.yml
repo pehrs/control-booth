@@ -39,21 +39,21 @@ error:
     log-levels:
       5xx: ERROR
 
-spring.security.oauth2.client:
-  registration:
-    control-booth:
-      provider: keycloak
-      client-id: control-booth
-      client-secret: m842p8DJjR7dBMCObcxBZYGOW1dqpS42
-      authorization-grant-type: authorization_code
-      scope: openid,profile,email
-      redirect-uri: ${NSA2_OAUTH_REDIRECT_URI:{baseUrl}/login/oauth2/code/control-booth}
-      client-name: "Control-Booth Keycloak"
-      client-authentication-method: client_secret_basic
-  provider:
-    keycloak:
-      issuer-uri: ${NSA2_OAUTH_ISSUER_URI:http://auth.nsa2.com:9000/realms/control-booth}
-      user-name-attribute: preferred_username
+#spring.security.oauth2.client:
+#  registration:
+#    control-booth:
+#      provider: keycloak
+#      client-id: control-booth
+#      client-secret: m842p8DJjR7dBMCObcxBZYGOW1dqpS42
+#      authorization-grant-type: authorization_code
+#      scope: openid,profile,email
+#      redirect-uri: ${NSA2_OAUTH_REDIRECT_URI:{baseUrl}/login/oauth2/code/control-booth}
+#      client-name: "Control-Booth Keycloak"
+#      client-authentication-method: client_secret_basic
+#  provider:
+#    keycloak:
+#      issuer-uri: ${NSA2_OAUTH_ISSUER_URI:http://auth.nsa2.com:9000/realms/control-booth}
+#      user-name-attribute: preferred_username
 
 
 logging:
