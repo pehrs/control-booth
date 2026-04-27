@@ -11,8 +11,8 @@ Control-Booth is an experimental Internal Developer Platform (IDP) — similar t
 ### Backend (Spring Boot / Maven)
 ```bash
 ./scripts/app-get-assets.sh   # Download frontend assets before first build
-./mvnw clean package          # Build the project
-./mvnw spring-boot:run        # Run locally (uses 'local' Spring profile)
+mvn clean package          # Build the project
+mvn spring-boot:run        # Run locally (uses 'local' Spring profile)
 mvn spring-boot:build-image   # Build Docker image
 ```
 

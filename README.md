@@ -90,14 +90,14 @@ The application can be built using the following command:
 # Make sure the assets are downloaded for the frontend app
 ./scripts/app-get-assets.sh
 
-mvnw clean package
+mvn clean package
 ```
 
 If required, a Docker image can be created with the Spring Boot plugin. Add
 `SPRING_PROFILES_ACTIVE=production` as environment variable when running the container.
 
 ```
-mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=com.pehrs/control-booth
+mvn spring-boot:build-image -Dspring-boot.build-image.imageName=com.pehrs/control-booth
 ```
 
 ## Run
