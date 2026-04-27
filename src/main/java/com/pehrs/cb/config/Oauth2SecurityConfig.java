@@ -1,9 +1,15 @@
 package com.pehrs.cb.config;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 //@Configuration
 //@EnableAspectJAutoProxy
@@ -12,7 +18,7 @@ public class Oauth2SecurityConfig {
 
   private LdapAuthProvider lynxAuthProvider;
 
- // @Bean
+  // @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests(auth ->
@@ -34,43 +40,34 @@ public class Oauth2SecurityConfig {
                 .permitAll()
                 .anyRequest().authenticated()
         )
-        .formLogin(form -> form
-            .loginPage("/login/index.html")
-            .loginProcessingUrl("/perform_login")
-            .defaultSuccessUrl("/html/index")
-            .permitAll()
-        )
-        .authenticationProvider(lynxAuthProvider) // Register custom provider
-//            .oauth2Login(Customizer.withDefaults())  // Enables OAuth2 login
-//            .oauth2Client(Customizer.withDefaults()) // Enables OAuth2 client
-           .csrf(AbstractHttpConfigurer::disable)  // Disable CSRF for APIs
-//            .cors(cors -> cors.configurationSource(corsConfigurationSource())); // Enable CORSs
+        .oauth2Login(Customizer.withDefaults())  // Enables OAuth2 login
+        .oauth2Client(Customizer.withDefaults()) // Enables OAuth2 client
+        .csrf(AbstractHttpConfigurer::disable)  // Disable CSRF for APIs
+        .cors(cors -> cors.configurationSource(corsConfigurationSource())); // Enable CORSs
     ;
 
     return http.build();
   }
 
-//
-//  @Bean
-//  public CorsConfigurationSource corsConfigurationSource() {
-//    CorsConfiguration config = new CorsConfiguration();
-//    config.setAllowCredentials(true);
-//    config.setAllowedOrigins(List.of(
-//        // FIXME: This needs to be in the application.yml config
-//        "http://auth.nsa2.com:9000",  // Keycloak
-//
-////        "http://gateway.nsa2.com:8080",
-////        "http://gateway.nsa2.com:3030"
-//        // FIXME: This needs to be in the application.yml config
-//        "http://control-booth.org:8080",
-//        "http://control-booth.org:3030"
-//    ));
-//    config.setAllowedHeaders(List.of("*"));
-//    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-//
-//    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//    source.registerCorsConfiguration("/**", config);
-//    return source;
-//  }
+
+  @Bean
+  public CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration config = new CorsConfiguration();
+    config.setAllowCredentials(true);
+    config.setAllowedOrigins(List.of(
+        // FIXME: This needs to be in the application.yml config
+        "http://auth.nsa2.com:9000",  // Keycloak
+
+        // FIXME: This needs to be in the application.yml config
+        "http://control-booth.org:8080",
+        "http://control-booth.org:3030"
+    ));
+    config.setAllowedHeaders(List.of("*"));
+    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", config);
+    return source;
+  }
 
 }
